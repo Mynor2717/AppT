@@ -2,7 +2,7 @@
 
 
 const App =() => {
-  return <h1>Holis estamos conectados</h1>
+  return <h1 className="text-center md:text-right">Holis estamos conectados</h1>
 
 
     
@@ -10,3 +10,4 @@ const App =() => {
 
 
 export default App;
+/* Es un archivo para modificar mucho del VSC */ 
