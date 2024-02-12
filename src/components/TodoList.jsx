@@ -1,15 +1,14 @@
 import TodoItem from "./TodoItem";
-import CrossIcon from "./icons/CrossIcon";
 
-const TodoList = () => {
+const TodoList = ({ todos }) => {
     return (
         <div className="bg-white rounded-t-md mt-8">
 
-            <TodoItem />
-            <TodoItem />
-            <TodoItem />
-            <TodoItem />
-            <TodoItem />
+            {todos.map((todo) => (
+
+                <TodoItem key={todo.id} todo={todo} />
+
+            ))}
 
         </div>
     )
