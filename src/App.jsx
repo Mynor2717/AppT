@@ -36,8 +36,41 @@ const App =() => {
     }
     setTodos([...todos, newTodo]);
 
+  };
+
+  const removeTodo =  (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
+
+  const updateTodo = (id) => {
+    setTodos(todos.map(todo => todo.id === id ?{...todo, completed: !todo.completed} : todo))
   }
 
+
+  const computedItemLeft = todos.filter((todo) => !todo.completed).length;
+
+  const clearCompleted = () => {
+    setTodos(todos.filter((todo) => !todo.completed));
+  }
+
+   const [filter, setFilter] = useState("Todo");
+
+   const ChangeFilter =(filter) => setFilter(filter)
+
+   const filteredTodos = () => {
+      switch (filter) {
+        case "Todo":
+          return todos;
+        case "Activar":
+          return todos.filter((todo) => !todo.completed);
+        case "Completar":
+          return todos.filter((todo) => todo.completed);
+          default:
+            return todos;
+      }
+   }
+      
   return (
     
 
@@ -49,11 +82,11 @@ const App =() => {
 
     <CreateTodo createTodo={createTodo}/>
 
-    <TodoList todos={todos} />
+    <TodoList todos={filteredTodos()} removeTodo={removeTodo} updateTodo={updateTodo}/>
 
-    <TodoComputed />
+    <TodoComputed  computedItemLeft={computedItemLeft} clearCompleted={clearCompleted}/>
 
-    <TodoFilter />
+    <TodoFilter ChangeFilter={ChangeFilter} filter={filter}/>
 
 </main>
 
