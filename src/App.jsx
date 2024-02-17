@@ -74,7 +74,8 @@ const App =() => {
   return (
     
 
-  <div className="bg-[url('./assets/bg-mobile-light.jpg')] bg-no-repeat bg-contain bg-gray-300 min-h-screen">
+  <div className="bg-[url('./assets/bg-mobile-light.jpg')] bg-no-repeat bg-contain 
+  bg-gray-300 min-h-screen dark:bg-gray-900  dark:bg-[url('./assets/bg-mobile-dark.jpg')]">
  
    <Header />
 
@@ -91,7 +92,7 @@ const App =() => {
 </main>
 
 <section>
-  <footer className="text-center mt-8">Drag and Drop</footer>
+  <footer className="text-center mt-8 dark:text-gray-400">Drag and Drop</footer>
 </section>
 
   </div>
