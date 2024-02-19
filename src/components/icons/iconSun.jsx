@@ -1,4 +1,4 @@
-const iconSun = ({ ...props }) => {
+const IconSun = ({ ...props }) => {
     return (
         <svg
             {...props}
@@ -15,4 +15,4 @@ const iconSun = ({ ...props }) => {
 }
 
 
-export default iconSun;
+export default IconSun;
