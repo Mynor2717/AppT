@@ -1,19 +1,38 @@
+import { Droppable, Draggable } from "@hello-pangea/dnd";
 import TodoItem from "./TodoItem";
 
 const TodoList = ({ todos, removeTodo, updateTodo }) => {
     return (
-        <div className="bg-white rounded-t-md mt-8 overflow-hidden">
+        <Droppable droppableId="todos">
+            {
+                (droppableProvided) => (
 
-            {todos.map((todo) => (
+                    <div ref={droppableProvided.innerRef}
+                        {...droppableProvided.droppableProps}
+                        className="bg-white rounded-t-md mt-8 overflow-hidden">
 
-                <TodoItem key={todo.id}
-                    todo={todo}
-                    removeTodo={removeTodo}
-                    updateTodo={updateTodo} />
+                        {todos.map((todo, index) => (
+                            <Draggable key={todo.id} index={index} draggableId={`${todo.id}`}>
+                                {
+                                    (draggableProvided) => (
 
-            ))}
-
-        </div>
+                                        <TodoItem
+                                            todo={todo}
+                                            removeTodo={removeTodo}
+                                            updateTodo={updateTodo}
+                                            ref={draggableProvided.innerRef}
+                                            {...draggableProvided.dragHandleProps}
+                                            {...draggableProvided.draggableProps}
+                                        />
+                                    )
+                                }
+                            </Draggable>
+                        ))}
+                        {droppableProvided.placeholder}
+                    </div>
+                )
+            }
+        </Droppable>
     )
 }
 
